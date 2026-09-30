@@ -1,4 +1,139 @@
-(()=>{const p=document.getElementById("petals");if(p){for(let i=0;i<18;i++){let x=document.createElement("span");x.className="petal";x.textContent=Math.random()>.3?"♥":"✦";x.style.left=Math.random()*100+"vw";x.style.fontSize=8+Math.random()*12+"px";x.style.animationDuration=7+Math.random()*8+"s";x.style.animationDelay=-Math.random()*12+"s";p.appendChild(x)}}})();const bar=document.getElementById("bar");addEventListener("scroll",()=>{if(bar){let h=document.documentElement.scrollHeight-innerHeight;bar.style.width=(h?scrollY/h*100:0)+"%"}});const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("show")),{threshold:.1});document.querySelectorAll(".reveal").forEach(x=>io.observe(x));
-function counter(){if(typeof LOVE_CONFIG==="undefined")return;let s=new Date(LOVE_CONFIG.firstMet).getTime();function t(){let n=Math.max(0,Date.now()-s),q=Math.floor(n/1000),d=Math.floor(q/86400),h=Math.floor(q%86400/3600),m=Math.floor(q%3600/60),z=q%60;const a=(id,v)=>{let e=document.getElementById(id);if(e)e.textContent=String(v).padStart(2,"0")};a("days",d);a("hours",h);a("minutes",m);a("seconds",z)}t();setInterval(t,1000)}counter();
-const env=document.getElementById("envelope"),op=document.getElementById("open");if(env&&op)op.onclick=()=>{env.classList.toggle("open");op.textContent=env.classList.contains("open")?"اقفلي الرسالة ♥":"افتحي الرسالة ♥"};
-const audio=document.getElementById("player"),ms=document.getElementById("music");if(audio&&typeof LOVE_CONFIG!=="undefined"){let i=0;function play(){audio.src=LOVE_CONFIG.songs[i];audio.volume=.55;audio.play().then(()=>{if(ms)ms.textContent="♪ "+(i+1)+" / "+LOVE_CONFIG.songs.length+" · OUR STORY"}).catch(()=>{if(ms)ms.textContent="♪ اضغط لتشغيل الموسيقى"})}audio.onended=()=>{i=(i+1)%LOVE_CONFIG.songs.length;play()};addEventListener("load",play);const u=()=>{audio.play().catch(()=>{});removeEventListener("click",u);removeEventListener("touchstart",u)};addEventListener("click",u,{once:true});addEventListener("touchstart",u,{once:true})}})();
+/* Eyad ♥ Sara — كل الملفات الصوتية والصور والخطوط بجوار ملفات الكود مباشرة. */
+"use strict";
+
+const $ = (s) => document.querySelector(s);
+
+/* بيانات الدخول للواجهة فقط. كلمة المرور لا يمكن إخفاؤها بأمان داخل موقع ثابت. */
+const USERNAME = "Sara";
+const PASSWORD = "Love";
+
+/* حط ملف أغنية شاشة الدخول بجوار index.html وسمّه login.mp3.
+   بعد تسجيل الدخول، ضع ثلاث أغنيات بجوار الملفات وغيّر أسماءها هنا. */
+const LOGIN_SONG = "login.mp3";
+const PLAYLIST = ["song1.mp3", "song2.mp3", "song3.mp3"];
+
+const loginScreen = $("#login-screen");
+const site = $("#site");
+const loginAudio = $("#login-audio");
+const playlistAudio = $("#playlist-audio");
+const soundToggle = $("#sound-toggle");
+const soundLabel = $("#sound-label");
+let currentPage = 1;
+let trackIndex = 0;
+let playlistStarted = false;
+let loginAudioStarted = false;
+
+function startLoginMusic() {
+  if (loginAudioStarted) return;
+  loginAudioStarted = true;
+  loginAudio.src = LOGIN_SONG;
+  loginAudio.volume = 0.35;
+  loginAudio.play().catch(() => {
+    // المتصفح قد ينتظر أول تفاعل من المستخدم؛ سيُعاد المحاولة عند الضغط على زر الدخول.
+  });
+}
+document.addEventListener("pointerdown", startLoginMusic, { once: true });
+
+$("#show-password").addEventListener("click", () => {
+  const input = $("#password");
+  input.type = input.type === "password" ? "text" : "password";
+});
+
+$("#login-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  const username = $("#username").value.trim();
+  const password = $("#password").value;
+  const error = $("#login-error");
+
+  if (username !== USERNAME || password !== PASSWORD) {
+    error.textContent = "اسم المستخدم أو كلمة المرور مش مظبوطة، جرّبي تاني.";
+    return;
+  }
+  error.textContent = "";
+  loginAudio.pause();
+  loginScreen.classList.add("hidden");
+  site.classList.remove("hidden");
+  document.body.classList.add("logged-in");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  startPlaylist();
+  createFloaters();
+});
+
+function showPage(number) {
+  currentPage = Math.max(1, Math.min(3, number));
+  document.querySelectorAll(".page").forEach((page, index) => {
+    page.classList.toggle("active", index + 1 === currentPage);
+  });
+  $("#chapter-indicator").textContent = `الفصل ${currentPage} من ٣`;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+document.querySelectorAll(".next-button").forEach(button => {
+  button.addEventListener("click", () => showPage(Number(button.dataset.next)));
+});
+$("#restart").addEventListener("click", () => showPage(1));
+
+function playTrack(index) {
+  if (!PLAYLIST.length) return;
+  trackIndex = (index + PLAYLIST.length) % PLAYLIST.length;
+  playlistAudio.src = PLAYLIST[trackIndex];
+  playlistAudio.load();
+  playlistAudio.volume = 0.42;
+  playlistAudio.play().then(updateSoundButton).catch(() => {
+    updateSoundButton();
+    soundLabel.textContent = "اضغطي ♫ للتشغيل";
+  });
+}
+function startPlaylist() {
+  if (playlistStarted || !PLAYLIST.length) return;
+  playlistStarted = true;
+  playTrack(0);
+}
+playlistAudio.addEventListener("ended", () => {
+  trackIndex = (trackIndex + 1) % PLAYLIST.length;
+  playTrack(trackIndex); // بعد الأغنية الثالثة يرجع تلقائيًا للأولى
+});
+function updateSoundButton() {
+  const playing = !playlistAudio.paused;
+  soundToggle.classList.toggle("playing", playing);
+  soundLabel.textContent = playing ? "إيقاف الصوت" : "تشغيل الصوت";
+  soundToggle.setAttribute("aria-pressed", String(playing));
+}
+soundToggle.addEventListener("click", () => {
+  if (playlistAudio.paused) {
+    if (!playlistAudio.src) playTrack(trackIndex);
+    else playlistAudio.play().then(updateSoundButton).catch(updateSoundButton);
+  } else {
+    playlistAudio.pause();
+    updateSoundButton();
+  }
+});
+playlistAudio.addEventListener("play", updateSoundButton);
+playlistAudio.addEventListener("pause", updateSoundButton);
+
+/* ظرف الرسالة */
+const envelope = $("#envelope");
+const letterButton = $("#open-letter");
+letterButton.addEventListener("click", () => {
+  const opened = envelope.classList.toggle("open");
+  letterButton.setAttribute("aria-pressed", String(opened));
+  $("#envelope-hint").textContent = opened ? "كل كلمة هنا طالعة من قلبي ليكي ♥" : "افتحي الظرف وشوفي اللي جوايا ♡";
+});
+
+/* قلوب ولمعات خفيفة متحركة */
+const floaters = $("#floaters");
+const symbols = ["♥", "♡", "✧", "✿"];
+function addFloater() {
+  if (document.hidden || floaters.childElementCount > 18) return;
+  const item = document.createElement("span");
+  item.className = "floaty";
+  item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+  item.style.left = `${Math.random() * 100}%`;
+  item.style.fontSize = `${10 + Math.random() * 18}px`;
+  item.style.animationDuration = `${10 + Math.random() * 10}s`;
+  floaters.appendChild(item);
+  item.addEventListener("animationend", () => item.remove(), { once: true });
+}
+function createFloaters() {
+  for (let i = 0; i < 7; i++) window.setTimeout(addFloater, i * 300);
+  window.setInterval(addFloater, 1100);
+}

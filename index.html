@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10070c">
+<title>حكايتنا | إياد ♥ سارة</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="grain"></div>
+<div class="ambient" aria-hidden="true"><span></span><span></span><span></span><div id="floaters"></div></div>
+
+<!-- شاشة الدخول -->
+<section id="login-screen" class="screen login-screen">
+  <div class="login-side">
+    <div class="monogram">إ <b>♥</b> س</div>
+    <p class="kicker"><i></i> بسم الله الرحمن الرحيم <i></i></p>
+    <p class="english-kicker">A STORY WRITTEN IN THE STARS</p>
+    <h1 class="login-title">حكايتنا<br><em>لسه بتبدأ</em></h1>
+    <p class="login-intro">في حكايات بتبدأ بكلمة، وبتكبر لحد ما تبقى أجمل جزء في العمر…<br>دي حكايتنا إحنا.</p>
+    <div class="login-names" dir="ltr"><span>Eyad</span><b>♥</b><span>Sara</span></div>
+    <p class="login-small">مساحتنا الصغيرة… وذكرياتنا الكبيرة</p>
+  </div>
+  <div class="login-card-wrap">
+    <form class="login-card" id="login-form">
+      <div class="card-flower">✿</div>
+      <p class="eyebrow">PRIVATE LOVE LETTER</p>
+      <h2>ادخلي يا سارة</h2>
+      <p class="card-subtitle">المكان ده معمول مخصوص ليكي ♥</p>
+      <label for="username">اسم المستخدم <span>USERNAME</span></label>
+      <input id="username" name="username" autocomplete="username" placeholder="اكتبي اسمك هنا" required>
+      <label for="password">كلمة المرور <span>PASSWORD</span></label>
+      <div class="password-wrap"><input id="password" name="password" type="password" autocomplete="current-password" placeholder="كلمة سر حكايتنا" required><button type="button" id="show-password" aria-label="إظهار كلمة المرور">◉</button></div>
+      <p id="login-error" class="error" role="status"></p>
+      <button class="button button-primary login-submit" type="submit">افتحي حكايتنا <span>↙</span></button>
+      <div class="card-bottom"><span>♥</span> made with love, just for you <span>♥</span></div>
+    </form>
+    <p class="audio-note">♫ موسيقى الدخول تبدأ بعد أول لمسة منك</p>
+  </div>
+</section>
+
+<!-- الموقع بعد الدخول -->
+<div id="site" class="hidden">
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="حكايتنا">إياد <b>♥</b> سارة <small>OUR STORY</small></a>
+    <div class="header-right"><span class="chapter-indicator" id="chapter-indicator">الفصل ١ من ٣</span><button class="sound-button" id="sound-toggle" type="button" aria-label="تشغيل أو إيقاف الموسيقى">♫ <span id="sound-label">الموسيقى</span></button></div>
+  </header>
+
+  <main>
+    <!-- الصفحة الأولى -->
+    <section class="page active" id="page-1">
+      <div class="page-shell opening-layout">
+        <div class="opening-copy">
+          <p class="eyebrow"><i></i> OUR STORY · حكايتنا</p>
+          <h1 class="main-title">إياد <span class="heart">♥</span> سارة</h1>
+          <p class="english-title" dir="ltr">Eyad <span>♥</span> Sara</p>
+          <h2 class="opening-headline">حكاية قلبي… <em>وحكايتنا إحنا</em></h2>
+          <p class="opening-text">من جروب تليجرام، بدأت حكاية ماكنتش أعرف إنها هتبقى بالحلاوة دي. صدفة صغيرة، بقت ذكرى كبيرة، ولسه أجمل فصولها جاية.</p>
+          <div class="date-cards">
+            <div class="date-card"><span class="date-icon">♡</span><small>أول يوم عرفنا بعض</small><strong>01 <i>/</i> 06 <i>/</i> 2026</strong><span class="date-en">THE BEGINNING</span></div>
+            <div class="date-card"><span class="date-icon">✧</span><small>أول مقابلة</small><strong>03 <i>/</i> 09 <i>/</i> 2026</strong><span class="date-en">THE FIRST MEETING</span></div>
+          </div>
+          <button class="button button-primary next-button" data-next="2">التالي <span>←</span></button>
+        </div>
+        <div class="opening-visual">
+          <div class="photo-halo"></div>
+          <div class="portrait-frame"><img src="memory1.jpg" alt="صورة من حكايتنا" onerror="this.style.display='none';this.parentElement.classList.add('missing-photo')"><div class="photo-placeholder"><span>♥</span><small>صورتنا هنا</small></div><span class="photo-label">A MOMENT TO KEEP</span></div>
+          <span class="ornament ornament-a">✿</span><span class="ornament ornament-b">✧</span><div class="round-seal">FOREVER<br><b>♥</b><br>US</div>
+          <p class="visual-caption">حكايتنا أحلى صدفة</p>
+        </div>
+      </div>
+      <div class="page-foot"><span>01 — THE BEGINNING</span><span>اسحبي قلبك للصفحة اللي بعدها ♥</span></div>
+    </section>
+
+    <!-- الصفحة الثانية: الذكريات -->
+    <section class="page" id="page-2">
+      <div class="page-shell">
+        <div class="section-heading">
+          <p class="eyebrow"><i></i> OUR LITTLE ARCHIVE</p>
+          <h2>صندوق <em>ذكرياتنا</em></h2>
+          <p>صور بسيطة، بس جواها حكايات كتير أوي.</p>
+          <p class="english-subtitle" dir="ltr">Little moments. Endless meaning.</p>
+        </div>
+        <div class="gallery">
+          <article class="gallery-card gallery-feature">
+            <div class="gallery-photo"><img src="memory1.jpg" alt="الذكرى الأولى" onerror="this.style.display='none';this.parentElement.classList.add('missing-photo')"><div class="photo-placeholder"><span>♡</span><small>الذكرى الأولى</small></div><span class="gallery-number">01</span></div>
+            <div class="gallery-caption"><span>01 / OUR BEGINNING</span><h3>أول حكاية</h3><p>من هنا بدأت التفاصيل اللي بحب أفتكرها.</p></div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-photo"><img src="memory2.jpg" alt="ذكرى دافئة" onerror="this.style.display='none';this.parentElement.classList.add('missing-photo')"><div class="photo-placeholder"><span>♥</span><small>لحظة دافية</small></div><span class="gallery-number">02</span></div>
+            <div class="gallery-caption"><span>02 / A SWEET MEMORY</span><h3>ضحكة من القلب</h3><p>تفصيلة صغيرة بتخلّي اليوم أحلى.</p></div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-photo"><img src="memory3.jpg" alt="ذكرى مميزة" onerror="this.style.display='none';this.parentElement.classList.add('missing-photo')"><div class="photo-placeholder"><span>✿</span><small>ذكرى مميزة</small></div><span class="gallery-number">03</span></div>
+            <div class="gallery-caption"><span>03 / JUST US</span><h3>أنا وإنتِ</h3><p>وأجمل الصور هي اللي لسه هنتصورها.</p></div>
+          </article>
+          <article class="gallery-card">
+            <div class="gallery-photo"><img src="memory4.jpg" alt="ذكرى إضافية" onerror="this.style.display='none';this.parentElement.classList.add('missing-photo')"><div class="photo-placeholder"><span>✧</span><small>لسه فيه كتير</small></div><span class="gallery-number">04</span></div>
+            <div class="gallery-caption"><span>04 / MORE TO COME</span><h3>لسه الحكاية طويلة</h3><p>مكان لذكرى جديدة، وابتسامة جديدة.</p></div>
+          </article>
+        </div>
+        <div class="center-action"><button class="button button-outline next-button" data-next="3">التالي: أجمل يوم <span>←</span></button></div>
+      </div>
+      <div class="page-foot"><span>02 — OUR MEMORIES</span><span>كل صورة ليها حكاية</span></div>
+    </section>
+
+    <!-- الصفحة الثالثة: أجمل يوم والرسالة -->
+    <section class="page" id="page-3">
+      <div class="page-shell final-page">
+        <div class="section-heading">
+          <p class="eyebrow"><i></i> THE DAY I WILL KEEP FOREVER</p>
+          <h2>أجمل يوم <em>في حياتي</em></h2>
+          <p>06 / 09 / 2026 — يوم ليه مكان مختلف في قلبي.</p>
+          <p class="english-subtitle" dir="ltr">One day. A thousand feelings. One you.</p>
+        </div>
+        <div class="best-day-card">
+          <div class="best-day-photo"><img src="memory3.jpg" alt="أجمل يوم" onerror="this.style.display='none';this.parentElement.classList.add('missing-photo')"><div class="photo-placeholder"><span>♥</span><small>أجمل يوم في حياتي</small></div></div>
+          <div class="best-day-copy"><span class="date-en">06 · 09 · 2026</span><h3>اليوم اللي هيفضل<br><em>منوّر في قلبي</em></h3><p>في أيام بتعدّي، وفي أيام بتفضل عايشة جوانا. واليوم ده من الأيام اللي كل ما أفتكرها، قلبي يبتسم من غير ما أحس.</p><div class="signature">إياد <b>♥</b> سارة</div></div>
+        </div>
+
+        <div class="letter-intro"><p class="eyebrow"><i></i> A LETTER FROM MY HEART</p><h2>رسالة <em>ليكي يا سارة</em></h2><p>اضغطي على الظرف… الرسالة دي ليكي إنتِ وبس.</p></div>
+        <button class="envelope-button" id="open-letter" type="button" aria-label="افتحي الرسالة">
+          <div class="envelope" id="envelope">
+            <div class="envelope-back"></div>
+            <div class="letter-paper">
+              <div class="letter-topline">TO MY FAVORITE PERSON · ♥</div>
+              <h3>لسارة حبيبتي،</h3>
+              <p>يمكن مش بعرف أقول كل اللي جوايا كل مرة، بس إنتِ بقيتي جزء من أحلامي ومن كل بكرة بتخيله. من أول يوم عرفنا بعض فيه، لأول مقابلة، لأجمل يوم في حياتي… كل ذكرى معاكي غالية عندي. أتمنى نفضل نكتب حكايتنا سوا، ونضحك على ذكرياتنا القديمة وإحنا بنصنع ذكريات أجمل.</p>
+              <strong>بحبك قد كل الحكايات اللي لسه جاية ♥</strong>
+              <span class="letter-from">— إياد</span>
+            </div>
+            <div class="envelope-front"></div><div class="envelope-flap"></div><span class="wax-seal">إ <b>♥</b> س</span>
+          </div>
+        </button>
+        <p class="envelope-hint" id="envelope-hint">افتحي الظرف وشوفي اللي جوايا ♡</p>
+        <button class="restart-button" id="restart">↻ نرجع لأول حكايتنا</button>
+      </div>
+      <div class="page-foot"><span>03 — A LETTER FOR YOU</span><span>إلى سارة، بكل الحب</span></div>
+    </section>
+  </main>
+  <footer class="site-footer"><span>إياد <b>♥</b> سارة</span><small>حكايتنا لسه بتتكتب · OUR STORY CONTINUES</small></footer>
+</div>
+
+<audio id="login-audio" preload="none" loop></audio>
+<audio id="playlist-audio" preload="metadata"></audio>
+<script src="script.js"></script>
+</body>
+</html>
