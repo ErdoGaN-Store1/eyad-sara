@@ -7,6 +7,8 @@ function login(){
   if(input.value === PASSWORD){
     document.getElementById("login").classList.add("hidden");
     document.getElementById("site").classList.remove("hidden");
+    const player = document.getElementById("player");
+    if (player) player.play().catch(() => {});
     updateCounter();
     setInterval(updateCounter,1000);
     startHearts();
