@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#120307">
+  <title>إياد ❤️ سارة</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="login" class="login-screen">
+  <div class="login-card">
+    <div class="login-heart">♥</div>
+    <h1>إياد ❤️ سارة</h1>
+    <p>ذكرياتنا الخاصة</p>
+    <input id="password" type="password" placeholder="كلمة المرور" autocomplete="off">
+    <button onclick="login()">دخول ❤️</button>
+    <small id="error"></small>
+  </div>
+</div>
+
+<main id="site" class="hidden">
+  <div class="hearts"></div>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="mini-heart">♥ ♥ ♥</div>
+      <p>من 01 / 06 / 2026</p>
+      <h1>إياد <span>❤️</span> سارة</h1>
+      <h2>حكايتنا بدأت صدفة… وبقت أجمل ذكرى.</h2>
+      <button onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})">ابدأ الحكاية ↓</button>
+    </div>
+  </section>
+
+  <section class="counter-section">
+    <p class="section-kicker">من يوم 01 / 06 / 2026</p>
+    <h2>وكل يوم بيضيف ذكرى جديدة ❤️</h2>
+    <div class="counter">
+      <div><b id="days">0</b><span>يوم</span></div>
+      <div><b id="hours">0</b><span>ساعة</span></div>
+      <div><b id="minutes">0</b><span>دقيقة</span></div>
+      <div><b id="seconds">0</b><span>ثانية</span></div>
+    </div>
+  </section>
+
+  <section id="story" class="story">
+    <div class="section-title"><span>♥</span><h2>إزاي بدأت حكايتنا؟</h2><span>♥</span></div>
+    <div class="story-card">
+      <p>
+        في يوم <strong>01 / 06 / 2026</strong> بدأت حكاية إياد وسارة من مكان بسيط جدًا…
+        جروب على تيليجرام.
+      </p>
+      <p>
+        محدش فينا كان يعرف إن التعارف العادي ده ممكن يتحول مع الوقت لذكريات
+        تفضل في القلب. كلمة ورا كلمة، وكلام ورا كلام، بقينا نعرف بعض أكتر،
+        وبقت سارة جزء مميز من حكاية إياد.
+      </p>
+      <p>
+        أجمل الحكايات مش لازم تبدأ بحاجة كبيرة؛ ساعات بتبدأ صدفة صغيرة،
+        وبعدها الأيام هي اللي بتكتب باقي القصة.
+      </p>
+    </div>
+  </section>
+
+  <section class="gallery">
+    <div class="section-title"><span>♥</span><h2>ذكرياتنا 📸</h2><span>♥</span></div>
+    <div class="photos">
+      <figure><img src="images/memory1.jpg" alt="ذكرى إياد وسارة"><figcaption>ذكرى ❤️</figcaption></figure>
+      <figure><img src="images/memory2.jpg" alt="ذكرى إياد وسارة"><figcaption>لحظة مميزة ❤️</figcaption></figure>
+      <figure><img src="images/memory3.jpg" alt="ذكرى إياد وسارة"><figcaption>ذكرى عمرها ما تتنسي ❤️</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="letter">
+    <div class="letter-card">
+      <div class="big-heart">♥</div>
+      <h2>إلى سارة ❤️</h2>
+      <p>
+        سارة، وجودك في حياتي خلّى للحاجات الصغيرة معنى مختلف.
+        من أول تعارفنا لحد كل لحظة بعدها، كل ذكرى ليها مكان خاص عندي.
+      </p>
+      <p>
+        يمكن مش كل الكلام يكفي عشان يوصف اللي جوايا، لكن أتمنى إنك تعرفي
+        إنك شخص غالي جدًا عندي، وإن أجمل حاجة في الحكاية إن لسه قدامنا
+        ذكريات كتير نضيفها للصفحة دي.
+      </p>
+      <p class="signature">إياد ❤️ سارة<br>01 / 06 / 2026</p>
+    </div>
+  </section>
+
+  <section class="timeline">
+    <div class="section-title"><span>♥</span><h2>محطات من حكايتنا</h2><span>♥</span></div>
+    <div class="timeline-item">
+      <span class="dot">♥</span>
+      <div><small>01 / 06 / 2026</small><h3>البداية</h3><p>اتقابلنا في جروب على تيليجرام، ومن هنا بدأت الحكاية.</p></div>
+    </div>
+    <div class="timeline-item">
+      <span class="dot">♥</span>
+      <div><small>بعد البداية</small><h3>التعارف</h3><p>الكلام زاد، والتفاصيل بقت أكتر، وبدأت تتكوّن ذكرياتنا.</p></div>
+    </div>
+    <div class="timeline-item">
+      <span class="dot">♥</span>
+      <div><small>مستمرين</small><h3>والحكاية لسه مكملة</h3><p>كل يوم صفحة جديدة، وكل ذكرى بتاخد مكانها في حكايتنا.</p></div>
+    </div>
+  </section>
+
+  <section class="music">
+    <h2>🎵 موسيقى الذكريات</h2>
+    <p>ضع هنا ملفًا صوتيًا تملك حق استخدامه باسم <b>music.mp3</b>.</p>
+    <audio id="player" controls preload="metadata">
+      <source src="music.mp3" type="audio/mpeg">
+      متصفحك لا يدعم تشغيل الصوت.
+    </audio>
+    <small>لم أضمّن أغنية عمرو دياب نفسها داخل الملف لأنها محمية بحقوق النشر.</small>
+  </section>
+
+  <footer>
+    <div>♥</div>
+    <p>إياد × سارة</p>
+    <small>01 / 06 / 2026</small>
+  </footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
